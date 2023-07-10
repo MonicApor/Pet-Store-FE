@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Navbar from "./components/navbar/Navbar";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/home/HomePage";
+import Products from "./pages/products/Products";
+import AddProduct from "./pages/add-product/AddProduct";
+import EditProduct from "./pages/edit-product/EditProduct";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* Navbar */}
+      <Navbar />
+
+      {/* Wrapper */}
+      <div className="wrapper">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+
+          <Route path="/products">
+            <Route index element={<Products />} />
+            <Route path="add" element={<AddProduct />} />
+            <Route path="edit/:id" element={<EditProduct />} />
+          </Route>
+        </Routes>
+      </div>
     </div>
   );
-}
+};
 
 export default App;

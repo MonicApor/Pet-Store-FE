@@ -1,0 +1,10 @@
+@import "../../mixins";
+
+.products {
+  @include main-style();
+}
+
+.delete_product {
+  margin-top: 5rem;
+  @include d-flex(none, center, center);
+}
